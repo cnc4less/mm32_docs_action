@@ -20,8 +20,12 @@ jobs:
         run: |
           if [ ! -d "ds" ]; then
             mkdir ds
+          else
+            rm ds/*
           fi
+          
           cd ds
+          
           wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=943
           wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1212
           wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1215
@@ -44,8 +48,12 @@ jobs:
           
           if [ ! -d "um" ]; then
             mkdir um
+          else
+            rm um/*
           fi
+          
           cd um
+          
           wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=945
           wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1220
           wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1221
