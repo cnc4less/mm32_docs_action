@@ -44,6 +44,8 @@ jobs:
           wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1101
           wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1205
           wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=918
+          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1157
+          
           cd ..
           
           if [ ! -d "um" ]; then
@@ -66,7 +68,7 @@ jobs:
           wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=578
           wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1115
           wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1111
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1157
+          
           
           
       - name: Git Auto Commit
