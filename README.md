@@ -1,3 +1,3 @@
 # mm32_docs_action
 
-Sync MindMotion documents from www.mindmotionm.com.cn everyday.
+Sync MindMotion documents from www.mindmotion.com.cn everyday.
