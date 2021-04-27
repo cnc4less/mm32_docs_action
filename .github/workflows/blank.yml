@@ -18,6 +18,18 @@ jobs:
       - name: Download
         shell: bash
         run: |
+          if [ ! -d "pb" ]; then
+            mkdir pb
+          else
+            rm pb/*
+          fi
+          
+          cd pb
+          
+          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1261
+          
+          cd ..
+         
           if [ ! -d "ds" ]; then
             mkdir ds
           else
@@ -47,7 +59,7 @@ jobs:
           wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1157
           wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1201
           wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1206
-          
+          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1262
           cd ..
           
           if [ ! -d "um" ]; then
