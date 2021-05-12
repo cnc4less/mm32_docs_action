@@ -14,78 +14,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
       - name: Download
-        shell: bash
-        run: |
-          if [ ! -d "pb" ]; then
-            mkdir pb
-          else
-            rm pb/*
-          fi
-          
-          cd pb
-          
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1261
-          
-          cd ..
-         
-          if [ ! -d "ds" ]; then
-            mkdir ds
-          else
-            rm ds/*
-          fi
-          
-          cd ds
-          
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=943
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1212
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1215
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1089
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=874
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1176
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1091
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=947
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=615
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1213
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1062
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1155
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=705
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1214
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=827
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1101
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1205
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=918
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1157
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1201
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1206
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1262
-          cd ..
-          
-          if [ ! -d "um" ]; then
-            mkdir um
-          else
-            rm um/*
-          fi
-          
-          cd um
-          
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=945
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1220
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1221
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1109
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1087
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1178
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1093
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=949
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=611
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=578
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1115
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1111
-          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1264
-          
-          
-          
+        uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+        run: node main.js
       - name: Git Auto Commit
         uses: stefanzweifel/git-auto-commit-action@v4.9.1
         with:
