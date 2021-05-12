@@ -82,6 +82,7 @@ jobs:
           wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=578
           wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1115
           wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1111
+          wget --content-disposition http://www.mindmotion.com.cn/getfile.aspx?id=1264
           
           
           
