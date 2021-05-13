@@ -6,14 +6,15 @@ const baseUrlRegex = /http[s]?:\/\/[\w\d\.]+\//;
 const fileListPath = "filelist.json";
 let fileList = JSON.parse(fs.readFileSync(fileListPath).toString());
 
-async function download(x) {
+function download(x) {
     let url = fileList[x].url;
     let etag = fileList[x].etag;
 
-    await http.get(url, async (res) => {
+    http.get(url, (res) => {
+
         if (res.headers.location !== undefined) {
             let name = res.headers.location.split("/");
-            name = name[name.length - 1];
+            name = decodeURI(name[name.length - 1]);
 
             let dir = name.split('_')[0].toLowerCase() + '/';
 
@@ -22,7 +23,9 @@ async function download(x) {
             }
 
             let baseUrl = url.match(baseUrlRegex)[0];
-            await http.get(baseUrl + res.headers.location, async (res) => {
+            http.get(baseUrl + res.headers.location, (res) => {
+                res.setEncoding('utf-8');
+
                 if (res.headers.etag != etag || fs.existsSync(dir + name) == false) {
                     console.log("Downloading", name);
 
@@ -30,7 +33,7 @@ async function download(x) {
 
                     res.pipe(file);
 
-                    await res.on("end", () => {
+                    res.on("end", () => {
                         console.log(name, "download complete.");
                         fileList[x].etag = res.headers.etag;
                         downloads(x + 1);
